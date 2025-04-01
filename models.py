@@ -60,4 +60,4 @@ engine = create_engine('postgresql://postgres:postgres_password@localhost/postgr
 Session = sessionmaker(bind=engine)
 
 # Створення таблиць у базі даних
-Base.metadata.create_all(engine)
+# Base.metadata.create_all(engine)
