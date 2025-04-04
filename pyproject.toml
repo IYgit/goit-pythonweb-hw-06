@@ -1,5 +1,5 @@
 [project]
-name = "hw06"
+name = "goit-pythonweb-hw-06"
 version = "0.1.0"
 description = ""
 authors = [
@@ -8,12 +8,13 @@ authors = [
 readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
-    "alembic (>=1.15.2,<2.0.0)",
-    "psycopg2-binary (>=2.9.10,<3.0.0)"
+    "psycopg2 (>=2.9.10,<3.0.0)",
+    "python-dotenv (>=1.1.0,<2.0.0)",
+    "alembic (>=1.15.2,<2.0.0)"
 ]
 
 [tool.poetry]
-packages = [{include = "hw06", from = "src"}]
+packages = [{include = "goit_pythonweb_hw_06", from = "src"}]
 
 
 [build-system]
