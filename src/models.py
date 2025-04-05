@@ -5,15 +5,6 @@ from db.config import get_database_url
 
 DATABASE_URL = get_database_url()
 
-# Завантажує .env
-# load_dotenv()
-#
-# # Формує URL з env-змінних
-# DATABASE_URL = (
-#     f"postgresql://{os.getenv('DB_USER')}:{os.getenv('DB_PASSWORD')}"
-#     f"@{os.getenv('DB_HOST')}:{os.getenv('DB_PORT')}/{os.getenv('DB_NAME')}"
-# )
-
 Base = declarative_base()
 
 
@@ -78,6 +69,10 @@ class Grade(Base):
 def init_db():
     ps_engine = create_engine(DATABASE_URL)
     Base.metadata.create_all(ps_engine)
+
+    with ps_engine.connect() as conn:
+        print("Підключення успішне!")
+
     return ps_engine
 
 
