@@ -1,17 +1,18 @@
-import os
-
-from dotenv import load_dotenv
 from sqlalchemy import Column, Integer, String, ForeignKey, Date, Float, create_engine
 from sqlalchemy.orm import declarative_base, relationship, sessionmaker
 
-# Завантажує .env
-load_dotenv()
+from db.config import get_database_url
 
-# Формує URL з env-змінних
-DATABASE_URL = (
-    f"postgresql://{os.getenv('DB_USER')}:{os.getenv('DB_PASSWORD')}"
-    f"@{os.getenv('DB_HOST')}:{os.getenv('DB_PORT')}/{os.getenv('DB_NAME')}"
-)
+DATABASE_URL = get_database_url()
+
+# Завантажує .env
+# load_dotenv()
+#
+# # Формує URL з env-змінних
+# DATABASE_URL = (
+#     f"postgresql://{os.getenv('DB_USER')}:{os.getenv('DB_PASSWORD')}"
+#     f"@{os.getenv('DB_HOST')}:{os.getenv('DB_PORT')}/{os.getenv('DB_NAME')}"
+# )
 
 Base = declarative_base()
 

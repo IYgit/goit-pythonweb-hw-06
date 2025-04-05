@@ -1,22 +1,18 @@
 from logging.config import fileConfig
 
-from dotenv import load_dotenv
-import os
 from alembic import context
 from sqlalchemy import engine_from_config, pool
 
-# Завантажує .env
-load_dotenv()
+import os
+from dotenv import load_dotenv
+from sqlalchemy.engine.url import URL
 
-# Формує URL з env-змінних
-db_url = (
-    f"postgresql://{os.getenv('DB_USER')}:{os.getenv('DB_PASSWORD')}"
-    f"@{os.getenv('DB_HOST')}:{os.getenv('DB_PORT')}/{os.getenv('DB_NAME')}"
-)
+from db.config import get_database_url
 
-# Встановлює URL у конфіг Alembic
+
 config = context.config
-config.set_main_option("sqlalchemy.url", db_url)
+
+config.set_main_option("sqlalchemy.url", get_database_url())
 
 # Interpret the config file for Python logging.
 # This line sets up loggers basically.
