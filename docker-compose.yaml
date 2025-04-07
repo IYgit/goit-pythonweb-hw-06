@@ -1,0 +1,26 @@
+version: '3.8'
+services:
+  app:
+    build: .
+    environment:
+      - SQLALCHEMY_DATABASE_URI=postgresql://postgres:psw@db:5432/postgres
+    ports:
+      - "5000:5000"
+    depends_on:
+      - db
+    volumes:
+      - .:/app
+      - ./logs:/app/logs  # Додатково можна створити каталог для логів, якщо ваш додаток їх веде
+  db:
+    image: postgres:13
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: psw
+      POSTGRES_DB: postgres
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+volumes:
+  postgres_data:

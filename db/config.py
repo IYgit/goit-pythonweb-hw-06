@@ -34,8 +34,10 @@ def get_database_url():
 # with engine.connect() as conn:
 #     print("Підключення успішне!")
 
-print(f"username: {os.getenv("DB_USER")}")
-print(f"password: {quote_plus(os.getenv("DB_PASSWORD"))}")
-print(f"host: {os.getenv("DB_HOST")}")
-print(f"port: {os.getenv("DB_PORT")}")
-print(f"database: {os.getenv("DB_NAME")}")
+# print(f"username: {os.getenv("DB_USER")}")
+# print(f"password: {quote_plus(os.getenv("DB_PASSWORD"))}")
+# print(f"host: {os.getenv("DB_HOST")}")
+# print(f"port: {os.getenv("DB_PORT")}")
+# print(f"database: {os.getenv("DB_NAME")}")
+
+print(f"{get_database_url()}")
