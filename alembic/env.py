@@ -3,12 +3,9 @@ from logging.config import fileConfig
 from alembic import context
 from sqlalchemy import engine_from_config, pool
 
-import os
-from dotenv import load_dotenv
-from sqlalchemy.engine.url import URL
-
 from db.config import get_database_url
 
+from src.models import Base
 
 config = context.config
 
@@ -23,7 +20,8 @@ if config.config_file_name is not None:
 # for 'autogenerate' support
 # from myapp import mymodel
 # target_metadata = mymodel.Base.metadata
-target_metadata = None
+
+target_metadata = Base.metadata
 
 # other values from the config, defined by the needs of env.py,
 # can be acquired:
